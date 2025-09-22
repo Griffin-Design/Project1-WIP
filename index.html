@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+   <title>PennsylvaniaAdventures</title>
+    </head>
+
+<style>
+
+    .layout {
+     width: 1860px;
+     height: 2000px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+     position: relative;
+     background-color: #D5D3CC;
+    }
+
+    #headerbox {
+     width: 1860px;
+     height: 100px;
+     top: 0px;
+     position: absolute;
+     flex-shrink: 0;
+     background-color: #19350C;
+     z-index: 1;
+    }
+
+    #rectangle2 {
+     width: 1000px;
+     height: 288px;
+     top: 400px;
+     position: absolute;
+     flex-shrink: 0;
+      background-color:rgba(104, 125, 49, 0.49);
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+     z-index: 0;
+    }
+
+    .header1{
+     width: 800px;
+     height: 203px;
+     flex-shrink: 0;
+     color: #FFF;
+     text-align: center;
+     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+     -webkit-text-stroke-width: 4px;
+     -webkit-text-stroke-color: #406768;
+     font-family: Inter;
+     font-size: 80px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+
+    }
+
+    .header2{
+     width: 800px;
+     height: 289px;
+     flex-shrink: 0;
+     color: #FFF;
+     text-align: center;
+     text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+     -webkit-text-stroke-width: 3px;
+     -webkit-text-stroke-color: #406768;
+     font-family: Inter;
+     font-size: 70px;
+     font-style: normal;
+     font-weight: 700;
+     line-height: normal;
+     text-transform: capitalize;
+    }
+
+    #footerbox {
+     width: 1860px;
+     height: 200px;
+     bottom: 0px;
+     position: absolute;
+     flex-shrink: 0;
+     background-color: #19350C;
+     z-index: 1;
+    }
+
+</style>
+
+<body style="background-color: #D5D3CC">
+
+<div class="layout">
+    <div id="headerbox"></div>
+    <div id="rectangle2"></div>
+    <div id="footerbox"></div>
+    <div class="header1">
+      <h1 style="text-align:center;">Pennsylvania</h1>
+    </div>
+    <div class="header2">
+      <p style="text-align:center;">Discover Your Adventure</p>
+    </div>
+</div>
+
+ </body>
+</html>
