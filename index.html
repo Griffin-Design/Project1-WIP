@@ -11,7 +11,7 @@
 
     .layout {
      width: 1860px;
-     height: 2000px;
+     height: 3000px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -77,6 +77,78 @@
      position: absolute;
     }
 
+    #ibox1 {
+     width: 400px;
+     height: 300px;
+     top: 750px;
+     left: 100px;
+     position: absolute;
+     flex-shrink: 0;
+     background: #406768;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+     z-index: 1;
+    }
+
+    #ibox2 {
+     width: 400px;
+     height: 300px;
+     top: 1100px;
+     left: 100px;
+     position: absolute;
+     flex-shrink: 0;
+     background: #406768;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+     z-index: 1;
+    }
+
+    #ibox3 {
+     width: 400px;
+     height: 300px;
+     top: 1450px;
+     left: 100px;
+     position: absolute;
+     flex-shrink: 0;
+     background: #406768;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+     z-index: 1;
+    }
+
+    #ibox4 {
+     width: 400px;
+     height: 300px;
+     top: 750px;
+     left: 600px;
+     position: absolute;
+     flex-shrink: 0;
+     background: #406768;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+     z-index: 1;
+    }
+
+    #ibox5 {
+     width: 400px;
+     height: 300px;
+     top: 1100px;
+     left: 600px;
+     position: absolute;
+     flex-shrink: 0;
+     background: #406768;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+     z-index: 1;
+    }
+
+    #ibox6 {
+     width: 400px;
+     height: 300px;
+     top: 1450px;
+     left: 600px;
+     position: absolute;
+     flex-shrink: 0;
+     background: #406768;
+     box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.25);
+     z-index: 1;
+    }
+
     .svg {
      width: 57px;
      height: 58px;
@@ -84,11 +156,12 @@
      top: 20px;
      left: 20px;
      position: absolute;
+     z-index: 2;
     }
 
     #footerbox {
      width: 1860px;
-     height: 200px;
+     height: 300px;
      bottom: 0px;
      position: absolute;
      flex-shrink: 0;
@@ -103,6 +176,14 @@
 <div class="layout">
     <div id="headerbox"></div>
     <div id="rectangle2"></div>
+
+    <div id="ibox1"></div>
+    <div id="ibox2"></div>
+    <div id="ibox3"></div>
+    <div id="ibox4"></div>
+    <div id="ibox5"></div>
+    <div id="ibox6"></div>
+
     <div id="footerbox"></div>
     <div class="header1">
       <h1 style="text-align:center;">Pennsylvania</h1>
@@ -121,6 +202,22 @@
       <rect width="57" height="58" fill="white"/>
     </clipPath>
   </defs>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="60" height="58" viewBox="0 0 60 58" fill="none">
+  <path d="M29.9994 0C13.4313 0 0 13.0316 0 29.1065C0 42.7563 9.68621 54.2103 22.7527 57.3562V38.0015H16.5669V29.1065H22.7527V25.2738C22.7527 15.3671 27.3739 10.7752 37.3985 10.7752C39.2992 10.7752 42.5788 11.1373 43.9203 11.4982V19.5608C43.2123 19.4886 41.9824 19.4525 40.4548 19.4525C35.5361 19.4525 33.6353 21.2606 33.6353 25.9607V29.1065H43.4343L41.7508 38.0015H33.6353V58C48.4898 56.2594 60 43.9881 60 29.1065C59.9988 13.0316 46.5675 0 29.9994 0Z" fill="white"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="45" height="54" viewBox="0 0 45 54" fill="none">
+  <path d="M33.086 0H24.2074V36.7826C24.2074 41.1652 20.7926 44.7653 16.543 44.7653C12.2934 44.7653 8.87859 41.1652 8.87859 36.7826C8.87859 32.4783 12.2175 28.9565 16.3154 28.8V19.5653C7.28499 19.7217 0 27.313 0 36.7826C0 46.3305 7.43676 54 16.6189 54C25.801 54 33.2377 46.2522 33.2377 36.7826V17.9217C36.5767 20.4261 40.6745 21.913 45 21.9914V12.7565C38.3221 12.5217 33.086 6.88695 33.086 0Z" fill="white"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="56" height="50" viewBox="0 0 56 50" fill="none">
+  <path d="M12.1387 3.36561C18.559 8.25331 25.4647 18.1635 28.0002 23.4819C30.5358 18.1639 37.4411 8.25321 43.8616 3.36561C48.4941 -0.161149 56 -2.88996 56 5.79326C56 7.52741 55.0195 20.3611 54.4445 22.4446C52.4456 29.6882 45.1616 31.5358 38.6825 30.4176C50.0079 32.3722 52.889 38.8467 46.667 45.3212C34.8501 57.6175 29.6827 42.236 28.358 38.2947C28.1153 37.5722 28.0017 37.2341 28 37.5216C27.9983 37.2341 27.8847 37.5722 27.642 38.2947C26.3179 42.236 21.1506 57.6179 9.33302 45.3212C3.11088 38.8467 5.99187 32.3718 17.3175 30.4176C10.8382 31.5358 3.55414 29.6882 1.55554 22.4446C0.980458 20.3609 0 7.52722 0 5.79326C0 -2.88996 7.50608 -0.161149 12.1384 3.36561H12.1387Z" fill="white"/>
+</svg>
+
+<svg xmlns="http://www.w3.org/2000/svg" width="68" height="47" viewBox="0 0 68 47" fill="none">
+  <path d="M67.3227 10.1413C67.3227 10.1413 66.6586 5.53402 64.6133 3.51097C62.0234 0.848376 59.1281 0.835323 57.8 0.6787C48.2906 -3.73419e-07 34.0133 0 34.0133 0H33.9867C33.9867 0 19.7094 -3.73419e-07 10.2 0.6787C8.87187 0.835323 5.97656 0.848376 3.38672 3.51097C1.34141 5.53402 0.690625 10.1413 0.690625 10.1413C0.690625 10.1413 0 15.5579 0 20.9614V26.0255C0 31.429 0.677344 36.8456 0.677344 36.8456C0.677344 36.8456 1.34141 41.4529 3.37344 43.476C5.96328 46.1386 9.36328 46.0472 10.8773 46.3344C16.3227 46.8434 34 47 34 47C34 47 48.2906 46.9739 57.8 46.3082C59.1281 46.1516 62.0234 46.1386 64.6133 43.476C66.6586 41.4529 67.3227 36.8456 67.3227 36.8456C67.3227 36.8456 68 31.4421 68 26.0255V20.9614C68 15.5579 67.3227 10.1413 67.3227 10.1413ZM26.9742 32.173V13.3913L45.3422 22.8148L26.9742 32.173Z" fill="white"/>
 </svg>
 
  </body>
