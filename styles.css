@@ -110,6 +110,19 @@ footer .pa-box {
   margin-left: 0;
 }
 
+/* Make the PA letters visually larger in the footer without increasing the footer's background box size.
+   We allow the text to overflow the fixed .pa-box and keep the footer height unchanged. */
+footer .pa-box {
+  overflow: visible; /* allow the enlarged PA text to extend outside the box */
+}
+
+footer .pa-text {
+  font-size: clamp(34px, 6.2vw, 60px); /* larger, but responsive */
+  line-height: 0.9; 
+  display: inline-block;
+  transform: translateY(6%); /* small nudge to optically center the larger glyphs */
+}
+
 .pa-text {
   font-size: clamp(18px, 3.5vw, 34px);
   line-height: 1;
@@ -342,5 +355,58 @@ footer .footer-col:first-child ul {
   justify-content: center;
   margin: 0;
   padding: 0 0 0 3rem;
+}
+
+/* Footer contact box placed next to the PA mark. Kept compact so footer height doesn't change. */
+.footer-contact {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-left: 0.5rem;
+}
+
+.contact-box {
+  background: transparent;
+  color: #fff;
+  padding: 0.45rem 0.65rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 220px;
+  box-sizing: border-box;
+  align-items: flex-start;
+  font-size: 0.88rem;
+}
+
+.contact-line { line-height: 1.1; }
+
+@media (max-width: 640px) {
+  .contact-box { min-width: 140px; font-size: 0.82rem; }
+  footer .pa-text { font-size: clamp(26px, 8vw, 44px); }
+}
+
+/* Footer top row layout: left group (contact + PA) and right group (label) */
+.footer-top {
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.left-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.right-group { display: flex; align-items: center; }
+
+/* keep the contact box visually compact when next to PA */
+.left-group .contact-box { min-width: 180px; }
+
+@media (max-width: 560px) {
+  .footer-top { flex-direction: column; gap: 0.5rem; align-items: stretch; }
+  .left-group { justify-content: center; }
+  .right-group { justify-content: center; }
 }
 
