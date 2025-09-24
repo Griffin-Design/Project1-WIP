@@ -1,0 +1,298 @@
+:root {
+  --pa-green: #98b356;
+  --accent: #406768;
+  --bg: #D5D3CC;
+  --dark: #19350C;
+  /* scaled down sizes for a more compact layout */
+  --banner-height: 340px; /* was 420px */
+  --header-height: 56px;  /* was 70px */
+  --max-main-width: 960px; /* was 1200px */
+  --cards-max-width: 880px; /* was 1100px */
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: rgb(90, 90, 90);
+  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+main {
+  max-width: var(--max-main-width);
+  width: 100%;
+  min-height: 400px;
+  margin: 0 auto;
+  background-color: var(--bg);
+  box-sizing: border-box;
+  padding: 0;
+}
+
+header{
+  background: linear-gradient(
+    to bottom,
+    rgba(25,53,12,0.95) 0%,
+    rgba(25,53,12,0.95) 50%, 
+    rgba(25,53,12,0.6) 95%,    
+    rgba(25,53,12,0.05) 120%);
+  height: var(--header-height);
+  padding: 0; /* remove vertical padding since height controls size */
+  position: relative; 
+  z-index: 2;
+  color: #ffffff;
+}
+
+/* keep header nav items and inline blocks white */
+header .nav-item,
+header .flex > div {
+  color: #ffffff;
+}
+
+/* removed empty banner overlay pseudo-element (no-op) */
+
+#banner {
+  position: relative;
+  height: var(--banner-height);
+  z-index: 1;
+  background-image: url("PAwilds.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#content {
+  padding: 16px;
+}
+
+.flex {
+  display: flex;
+}
+.flex-wrap { flex-wrap: wrap; }
+.half { width: 50%; box-sizing: border-box; }
+.nav-list { list-style: none; margin: 0; padding: 0; display: flex; gap: 1.75rem; align-items: center; }
+.nav-item { flex: 0 0 auto; text-align: center; padding: 0 0.5rem; font-size: 0.95rem; }
+.search-box { width: auto; display: flex; align-items: center; justify-content: center; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
+
+/* Match SVG menu size to .pa-text visually (+10px for a slightly larger icon) */
+.search-box svg {
+  width: calc(clamp(20px, 4vw, 40px) + 10px);
+  height: auto;
+  display: block;
+}
+.footer-col { width: 50%; }
+
+header .flex {
+  align-items: center;
+  justify-content: center; /* center nav content horizontally */
+  height: 100%;
+  position: relative; /* allow absolutely-positioned children (search) */
+}
+
+/* fixed-size PA box and larger PA text without expanding header/footer */
+.pa-box {
+  width: 150px;
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* prevent text from increasing box size */
+  box-sizing: border-box;
+}
+
+/* in the header, float PA out of the flow so it doesn't enlarge the header */
+header .pa-box {
+  position: absolute;
+  left: 8px; /* move PA closer to the left edge */
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* position PA in the footer nearer the left edge of the layout */
+footer .pa-box {
+  position: relative; /* keep it in-flow but allow nudging */
+  left: -8px; /* visually move it closer to the layout edge */
+  margin-left: 0;
+}
+
+.pa-text {
+  /* PA text slightly smaller to match compact layout */
+  font-size: clamp(18px, 3.5vw, 34px); /* responsive cap */
+  line-height: 1;
+  font-weight: 700;
+  font-style: italic;
+  color: #ffffff;
+  white-space: nowrap;
+  display: inline-block;
+  transform-origin: center;
+}
+
+.cards {
+  display: flex;
+  flex-direction: row; 
+  gap: 1.25rem;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0.75rem 0;
+  width: 100%;
+  max-width: var(--cards-max-width); 
+  margin: 0 auto; 
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+  /* two equal columns that never exceed the .cards container */
+  flex: 0 1 calc(50% - 0.625rem);
+  max-width: calc(50% - 0.625rem);
+}
+
+.card {
+  flex: 0 0 auto; 
+  width: 100%;
+  max-width: 100%; /* fill the column without exceeding the container */
+  box-sizing: border-box;
+  margin: 0;
+}
+
+/* card typography */
+.card h3 {
+  margin: 0 0 0.4rem 0;
+  font-size: 0.92rem; /* more compact heading */
+}
+.card p {
+  margin: 0;
+  font-size: 0.82rem; /* more compact body text */
+  line-height: 1.45;
+}
+
+/* text half panel: white background and dark text, vertically centered */
+.card .half:first-child {
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #ffffff;
+  color: #222222;
+}
+
+@media (max-width: 800px) {
+  .cards {
+    flex-direction: column;
+  }
+  .column {
+    max-width: 100%;
+    width: 100%;
+  }
+  .pa-text {
+    font-size: 24px;
+  }
+  .card {
+    max-width: 720px;
+  }
+  .card h3 { font-size: 0.98rem; }
+  .card p { font-size: 0.82rem; }
+  .card h3 { font-size: 0.88rem; }
+  /* Responsive tagline adjustments */
+  .tagline-heading {
+    font-size: 48px;
+    /* reduced shadow offsets for small screens */
+    text-shadow:
+      -1px -1px 0 var(--accent),
+      1px -1px 0 var(--accent),
+      -1px 1px 0 var(--accent),
+      1px 1px 0 var(--accent),
+      0 3px 4px rgba(0,0,0,0.2);
+  }
+  /* reduce the tagline bar and move text closer on small screens */
+  #tagline {
+    height: 12px;
+  }
+  #tagline-text {
+    bottom: 8px;
+  }
+}
+
+header nav {
+  flex: 1 1 auto;
+}
+
+  .card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 8px solid var(--accent);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+/* taller tagline bar with heading separated above it */
+#tagline {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 90px; /* increased height */
+  background: var(--pa-green);
+  box-shadow: none;
+  z-index: 2;
+}
+
+/* separate heading above the taller bar */
+#tagline-text {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 22px; /* place text above the taller bar */
+  z-index: 3;
+  text-align: center;
+  width: calc(100% - 40px);
+  pointer-events: none; /* allow clicks to pass through if needed */
+}
+
+/* Tagline heading styling - use a reusable class so it can be applied anywhere */
+.tagline-heading {
+  color: #FFF;
+  text-align: center;
+  /* Use layered text-shadow to create a continuous outline (works across wraps)
+     -webkit-text-stroke can break at line wraps; shadows remain continuous */
+  text-shadow:
+    -2px -2px 0 var(--accent),
+    2px -2px 0 var(--accent),
+    -2px 2px 0 var(--accent),
+    2px 2px 0 var(--accent),
+    0 4px 6px rgba(0,0,0,0.25); /* subtle drop shadow */
+  /* limit sizing so the headline stays inside the main layout */
+  font-size: clamp(28px, 6vw, 120px);
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1;
+  margin: 0;
+  letter-spacing: 0.02em; /* tighter spacing for multi-line wrap */
+  display: inline; /* allow wrapping when needed */
+  max-width: calc(var(--max-main-width) - 80px); /* keep inside main width with padding */
+  word-break: break-word;
+  white-space: normal;
+}
+
+footer{
+  background: var(--dark);
+  color: #ffffff;
+}
+
+/* footer links can be styled individually when present; no anchors currently in footer */
+footer a,
+footer a:visited {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+footer ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer li {
+  color: inherit;
+}
