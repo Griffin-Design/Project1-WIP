@@ -156,9 +156,23 @@ footer .pa-box {
   margin: 0;
 }
 
+/* vertically center children so the text panel sits in the middle of the card */
+.card {
+  display: flex;
+  align-items: stretch; /* make both halves match height */
+  min-height: 180px; /* consistent visual height across cards */
+}
+
+/* Make all left text panels consistent size (matching the York card visual) */
+.card .half:first-child {
+  flex: 0 0 48%; /* give text panel a consistent width */
+  max-width: 48%;
+  min-height: 160px; /* ensure visual parity across cards */
+}
+
 /* card typography */
 .card h3 {
-  margin: 0 0 0.4rem 0;
+  margin: 0 0 0.2rem 0; /* tighter spacing to bring the white panel closer */
   font-size: 0.92rem; /* more compact heading */
 }
 .card p {
@@ -169,49 +183,32 @@ footer .pa-box {
 
 /* text half panel: white background and dark text, vertically centered */
 .card .half:first-child {
-  padding: 1rem 1.25rem;
+  /* left text panel: stretch to card height but center content vertically */
+  align-self: stretch;
+  flex: 0 0 48%;
+  max-width: 48%;
+  padding: 0.45rem 0.7rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; /* center text vertically inside the white panel */
   background: #ffffff;
   color: #222222;
 }
 
-@media (max-width: 800px) {
-  .cards {
-    flex-direction: column;
-  }
-  .column {
-    max-width: 100%;
-    width: 100%;
-  }
-  .pa-text {
-    font-size: 24px;
-  }
-  .card {
-    max-width: 720px;
-  }
-  .card h3 { font-size: 0.98rem; }
-  .card p { font-size: 0.82rem; }
-  .card h3 { font-size: 0.88rem; }
-  /* Responsive tagline adjustments */
-  .tagline-heading {
-    font-size: 48px;
-    /* reduced shadow offsets for small screens */
-    text-shadow:
-      -1px -1px 0 var(--accent),
-      1px -1px 0 var(--accent),
-      -1px 1px 0 var(--accent),
-      1px 1px 0 var(--accent),
-      0 3px 4px rgba(0,0,0,0.2);
-  }
-  /* reduce the tagline bar and move text closer on small screens */
-  #tagline {
-    height: 12px;
-  }
-  #tagline-text {
-    bottom: 8px;
-  }
+/* right panel should take the remaining width and the image fill the height */
+.card .half:last-child {
+  flex: 0 0 52%;
+  max-width: 52%;
+  display: block;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* fill the panel while preserving aspect ratio */
+  display: block;
+  border: 8px solid var(--accent);
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
 header nav {
@@ -261,15 +258,14 @@ header nav {
     2px -2px 0 var(--accent),
     -2px 2px 0 var(--accent),
     2px 2px 0 var(--accent),
-    0 4px 6px rgba(0,0,0,0.25); /* subtle drop shadow */
-  /* limit sizing so the headline stays inside the main layout */
-  font-size: clamp(28px, 6vw, 120px);
+    0 4px 6px rgba(0,0,0,0.25); 
+  font-size: 120px;
   font-style: normal;
   font-weight: 700;
   line-height: 1;
   margin: 0;
   letter-spacing: 0.02em; /* tighter spacing for multi-line wrap */
-  display: inline; /* allow wrapping when needed */
+  display: inline-block; /* allow max-width to apply */
   max-width: calc(var(--max-main-width) - 80px); /* keep inside main width with padding */
   word-break: break-word;
   white-space: normal;
