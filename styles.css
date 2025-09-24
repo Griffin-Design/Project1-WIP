@@ -53,7 +53,7 @@ header .flex > div {
   position: relative;
   height: var(--banner-height);
   z-index: 1;
-  background-image: url("PAwilds.jpg");
+  background-image: url("images/PAwilds.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
