@@ -3,11 +3,10 @@
   --accent: #406768;
   --bg: #D5D3CC;
   --dark: #19350C;
-  /* scaled down sizes for a more compact layout */
-  --banner-height: 340px; /* was 420px */
-  --header-height: 56px;  /* was 70px */
-  --max-main-width: 960px; /* was 1200px */
-  --cards-max-width: 880px; /* was 1100px */
+  --banner-height: 340px;
+  --header-height: 56px;
+  --max-main-width: 960px;
+  --cards-max-width: 880px;
 }
 
 body {
@@ -35,19 +34,16 @@ header{
     rgba(25,53,12,0.6) 95%,    
     rgba(25,53,12,0.05) 120%);
   height: var(--header-height);
-  padding: 0; /* remove vertical padding since height controls size */
+  padding: 0;
   position: relative; 
   z-index: 2;
   color: #ffffff;
 }
 
-/* keep header nav items and inline blocks white */
 header .nav-item,
 header .flex > div {
   color: #ffffff;
 }
-
-/* removed empty banner overlay pseudo-element (no-op) */
 
 #banner {
   position: relative;
@@ -60,7 +56,11 @@ header .flex > div {
 }
 
 #content {
-  padding: 16px;
+  padding: 56px 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 }
 
 .flex {
@@ -72,7 +72,6 @@ header .flex > div {
 .nav-item { flex: 0 0 auto; text-align: center; padding: 0 0.5rem; font-size: 0.95rem; }
 .search-box { width: auto; display: flex; align-items: center; justify-content: center; position: absolute; right: 12px; top: 50%; transform: translateY(-50%); }
 
-/* Match SVG menu size to .pa-text visually (+10px for a slightly larger icon) */
 .search-box svg {
   width: calc(clamp(20px, 4vw, 40px) + 10px);
   height: auto;
@@ -82,12 +81,11 @@ header .flex > div {
 
 header .flex {
   align-items: center;
-  justify-content: center; /* center nav content horizontally */
+  justify-content: center;
   height: 100%;
-  position: relative; /* allow absolutely-positioned children (search) */
+  position: relative;
 }
 
-/* fixed-size PA box and larger PA text without expanding header/footer */
 .pa-box {
   width: 150px;
   height: 88px;
@@ -99,15 +97,13 @@ header .flex {
   box-sizing: border-box;
 }
 
-/* in the header, float PA out of the flow so it doesn't enlarge the header */
 header .pa-box {
   position: absolute;
-  left: 8px; /* move PA closer to the left edge */
+  left: 8px;
   top: 50%;
   transform: translateY(-50%);
 }
 
-/* position PA in the footer nearer the left edge of the layout */
 footer .pa-box {
   position: relative; /* keep it in-flow but allow nudging */
   left: -8px; /* visually move it closer to the layout edge */
@@ -115,8 +111,7 @@ footer .pa-box {
 }
 
 .pa-text {
-  /* PA text slightly smaller to match compact layout */
-  font-size: clamp(18px, 3.5vw, 34px); /* responsive cap */
+  font-size: clamp(18px, 3.5vw, 34px);
   line-height: 1;
   font-weight: 700;
   font-style: italic;
@@ -132,10 +127,23 @@ footer .pa-box {
   gap: 1.25rem;
   justify-content: center;
   align-items: flex-start;
-  padding: 0.75rem 0;
+  padding: 0.75rem 0 1.25rem;
   width: 100%;
   max-width: var(--cards-max-width); 
   margin: 0 auto; 
+}
+
+.cards { margin-bottom: 3rem; }
+
+#content > .flex.flex-wrap {
+  width: 100%;
+  justify-content: center;
+}
+
+#content > p {
+  max-width: var(--cards-max-width);
+  text-align: center;
+  margin: 0 auto;
 }
 
 .column {
@@ -143,7 +151,6 @@ footer .pa-box {
   flex-direction: column;
   gap: 0.75rem;
   align-items: center;
-  /* two equal columns that never exceed the .cards container */
   flex: 0 1 calc(50% - 0.625rem);
   max-width: calc(50% - 0.625rem);
 }
@@ -156,21 +163,18 @@ footer .pa-box {
   margin: 0;
 }
 
-/* vertically center children so the text panel sits in the middle of the card */
 .card {
   display: flex;
   align-items: stretch; /* make both halves match height */
   min-height: 180px; /* consistent visual height across cards */
 }
 
-/* Make all left text panels consistent size (matching the York card visual) */
 .card .half:first-child {
   flex: 0 0 48%; /* give text panel a consistent width */
   max-width: 48%;
   min-height: 160px; /* ensure visual parity across cards */
 }
 
-/* card typography */
 .card h3 {
   margin: 0 0 0.2rem 0; /* tighter spacing to bring the white panel closer */
   font-size: 0.92rem; /* more compact heading */
@@ -181,7 +185,6 @@ footer .pa-box {
   line-height: 1.45;
 }
 
-/* text half panel: white background and dark text, vertically centered */
 .card .half:first-child {
   /* left text panel: stretch to card height but center content vertically */
   align-self: stretch;
@@ -195,7 +198,6 @@ footer .pa-box {
   color: #222222;
 }
 
-/* right panel should take the remaining width and the image fill the height */
 .card .half:last-child {
   flex: 0 0 52%;
   max-width: 52%;
@@ -205,7 +207,7 @@ footer .pa-box {
 .card img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* fill the panel while preserving aspect ratio */
+  object-fit: cover;
   display: block;
   border: 8px solid var(--accent);
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
@@ -223,52 +225,68 @@ header nav {
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 }
 
-/* taller tagline bar with heading separated above it */
 #tagline {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
-  height: 90px; /* increased height */
+  height: 90px;
   background: var(--pa-green);
   box-shadow: none;
   z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-/* separate heading above the taller bar */
 #tagline-text {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 22px; /* place text above the taller bar */
+  position: static;
+  transform: none;
+  bottom: auto;
   z-index: 3;
   text-align: center;
   width: calc(100% - 40px);
-  pointer-events: none; /* allow clicks to pass through if needed */
+  pointer-events: none;
 }
 
 /* Tagline heading styling - use a reusable class so it can be applied anywhere */
 .tagline-heading {
   color: #FFF;
   text-align: center;
-  /* Use layered text-shadow to create a continuous outline (works across wraps)
-     -webkit-text-stroke can break at line wraps; shadows remain continuous */
   text-shadow:
     -2px -2px 0 var(--accent),
     2px -2px 0 var(--accent),
     -2px 2px 0 var(--accent),
     2px 2px 0 var(--accent),
-    0 4px 6px rgba(0,0,0,0.25); 
-  font-size: 120px;
+    0 4px 6px rgba(0,0,0,0.25);
+  font-size: 100px;
   font-style: normal;
   font-weight: 700;
   line-height: 1;
   margin: 0;
-  letter-spacing: 0.02em; /* tighter spacing for multi-line wrap */
-  display: inline-block; /* allow max-width to apply */
-  max-width: calc(var(--max-main-width) - 80px); /* keep inside main width with padding */
+  letter-spacing: 0.02em;
+  display: inline-block;
+  max-width: calc(var(--max-main-width) - 80px);
   word-break: break-word;
   white-space: normal;
+}
+
+/* smaller sub-heading that matches the tagline's outline but is scaled down */
+.tagline-sub {
+  color: #FFF;
+  text-align: center;
+  text-shadow:
+    -2px -2px 0 var(--accent),
+    2px -2px 0 var(--accent),
+    -2px 2px 0 var(--accent),
+    2px 2px 0 var(--accent),
+    0 3px 4px rgba(0,0,0,0.2);
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.05;
+  margin: 0.25rem 0 0 0;
+  display: block;
+  pointer-events: none;
 }
 
 footer{
@@ -276,7 +294,6 @@ footer{
   color: #ffffff;
 }
 
-/* footer links can be styled individually when present; no anchors currently in footer */
 footer a,
 footer a:visited {
   color: #ffffff;
@@ -287,8 +304,43 @@ footer ul {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
 }
 
 footer li {
   color: inherit;
 }
+
+footer .flex {
+  gap: 1rem;
+  align-items: center;
+}
+
+footer > .flex + .flex {
+  border-top: 1px solid rgba(255,255,255,0.12);
+  padding-top: 0.6rem;
+  margin-top: 0.6rem;
+}
+
+footer .footer-col {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+}
+
+footer .footer-col:last-child {
+  justify-content: flex-end;
+  font-size: 0.85rem;
+  padding-right: 12px;
+  opacity: 0.95;
+}
+
+footer .footer-col:first-child ul {
+  justify-content: center;
+  margin: 0;
+  padding: 0 0 0 3rem;
+}
+
