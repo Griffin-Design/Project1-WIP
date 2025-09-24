@@ -266,12 +266,7 @@ header nav {
 .tagline-heading {
   color: #FFF;
   text-align: center;
-  text-shadow:
-    -2px -2px 0 var(--accent),
-    2px -2px 0 var(--accent),
-    -2px 2px 0 var(--accent),
-    2px 2px 0 var(--accent),
-    0 4px 6px rgba(0,0,0,0.25);
+  text-shadow: -2px -2px 0 var(--accent), 2px -2px 0 var(--accent), -2px 2px 0 var(--accent), 2px 2px 0 var(--accent), 0 4px 6px rgba(0,0,0,0.25);
   font-size: 100px;
   font-style: normal;
   font-weight: 700;
@@ -288,12 +283,7 @@ header nav {
 .tagline-sub {
   color: #FFF;
   text-align: center;
-  text-shadow:
-    -2px -2px 0 var(--accent),
-    2px -2px 0 var(--accent),
-    -2px 2px 0 var(--accent),
-    2px 2px 0 var(--accent),
-    0 3px 4px rgba(0,0,0,0.2);
+  text-shadow: -2px -2px 0 var(--accent), 2px -2px 0 var(--accent), -2px 2px 0 var(--accent), 2px 2px 0 var(--accent), 0 3px 4px rgba(0,0,0,0.2);
   font-size: 50px;
   font-weight: 700;
   line-height: 1.05;
@@ -381,10 +371,6 @@ footer .footer-col:first-child ul {
 
 .contact-line { line-height: 1.1; }
 
-@media (max-width: 640px) {
-  .contact-box { min-width: 140px; font-size: 0.82rem; }
-  footer .pa-text { font-size: clamp(26px, 8vw, 44px); }
-}
 
 /* Footer top row layout: left group (contact + PA) and right group (label) */
 .footer-top {
@@ -392,6 +378,17 @@ footer .footer-col:first-child ul {
   align-items: center;
   justify-content: space-between;
 }
+
+/* Social icons placed next to the "Stay Connected" label. Kept small and responsive. */
+.social-icons {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-left: 0.6rem;
+}
+/* size the inline svgs to a consistent square without button styles */
+.social-icons svg { width: 36px; height: 36px; display: block; }
+
 
 .left-group {
   display: flex;
@@ -404,9 +401,4 @@ footer .footer-col:first-child ul {
 /* keep the contact box visually compact when next to PA */
 .left-group .contact-box { min-width: 180px; }
 
-@media (max-width: 560px) {
-  .footer-top { flex-direction: column; gap: 0.5rem; align-items: stretch; }
-  .left-group { justify-content: center; }
-  .right-group { justify-content: center; }
-}
 
